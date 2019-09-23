@@ -1,0 +1,21 @@
+{
+  "name": "ktmethod2",
+  "version": "1.0.0",
+  "description": "kt method on mongodb express vue after brad",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "dev": "nodemon server/app.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}
