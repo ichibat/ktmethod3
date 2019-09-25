@@ -12,9 +12,9 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(cors());
 
-// const posts = require("./routes/api/scores");
+const scores = require("./routes/api/scores");
 
-// app.use("/api/scores", scores);
+app.use("/api/scores", scores);
 
 const port = process.env.PORT || 8000;
 
