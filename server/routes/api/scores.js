@@ -26,10 +26,12 @@ router.delete("/:id", async (req, res) => {
   res.status(200).send();
 });
 
+//Connect to database
 async function loadPostsCollection() {
   const client = await mongodb.MongoClient.connect(
     "mongodb://tims:Hit135Run@ds019946.mlab.com:19946/ktmethod",
     {
+      useNewUrlParser: true,
       useUnifiedTopology: true
     }
   );
