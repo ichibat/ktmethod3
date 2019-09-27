@@ -23,7 +23,7 @@ class ScoreService {
 
   // Create Score
   static insertScore(text) {
-    return axios.score(url, {
+    return axios.post(url, {
       text
     });
   }

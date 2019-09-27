@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <ScoreComponent msg="Welcome to Your Score Vue.js App" />
+    <ScoreComponent />
   </div>
 </template>
 
