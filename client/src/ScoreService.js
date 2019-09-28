@@ -15,8 +15,10 @@ class ScoreService {
             createdAt: new Date(score.createdAt)
           }))
         );
+        console.log("resolved!");
       } catch (err) {
         reject(err);
+        console.log("error!");
       }
     });
   }
