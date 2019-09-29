@@ -22,27 +22,22 @@ mongoose
 require("./models/Patient");
 const Patient = mongoose.model("patients");
 
-//Use Helmet
-app.use(helmet());
-
 //Views directory
 app.set("views", "./server/views");
+
+//Helmet
+app.use(helmet());
 
 //Express-handlebars
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
-//Middleware
+//Body-parser
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+//Cor
 app.use(cors());
-
-const scores = require("./routes/api/scores");
-
-app.use("/api/scores", scores);
-
-const port = process.env.PORT || 8000;
-
-app.listen(port, () => console.log(`Server started on port ${port}`));
 
 //Index route
 app.get("/", (req, res) => {
@@ -54,7 +49,42 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
-//About Patient Form
+//addPatients Form
 app.get("/patients/add", (req, res) => {
   res.render("patients/add");
 });
+
+//Post Patients Form
+app.post("/patients", (req, res) => {
+  console.log(req.body);
+  let errors = [];
+
+  if (!req.body.karteNumber) {
+    errors.push({ text: "カルテ番号を入力してください" });
+  }
+  if (!req.body.firstNameInitial) {
+    errors.push({ text: "名前のイニシャルを入力してください" });
+  }
+  if (!req.body.lastNameInitial) {
+    errors.push({ text: "苗字のイニシャルを入力してください" });
+  }
+  if (errors.length > 0) {
+    res.render("patients/add", {
+      errors: errors,
+      karteNumber: req.body.karteNumber,
+      firstNameInitial: req.body.firstNameInitial,
+      lastNameInitial: req.body.lastNameInitial
+    });
+  } else {
+    res.send("passed");
+  }
+});
+
+//Routing for api/scores
+const scores = require("./routes/api/scores");
+
+app.use("/api/scores", scores);
+
+//Port setting
+const port = process.env.PORT || 8000;
+app.listen(port, () => console.log(`Server started on port ${port}`));
