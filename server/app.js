@@ -60,12 +60,25 @@ app.get("/patients", (req, res) => {
     });
 });
 
-//addPatients Form
+//add Patients
 app.get("/patients/add", (req, res) => {
   res.render("patients/add");
 });
 
-//Post Patients Form
+//edit Patients Form
+app.get("/patients/edit/:id", (req, res) => {
+  patient
+    .findOne({
+      _id: req.params.id
+    })
+    .then(patient => {
+      res.render("patients/edit", {
+        patient: patient
+      });
+    });
+});
+
+//Post Patients
 app.post("/patients", (req, res) => {
   console.log(req.body);
   let errors = [];

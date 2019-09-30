@@ -1,8 +1,8 @@
 {{#each patients}}
 <div class="card card-content">
-  <p>{{karteNumber}}</p>
-  <p>{{firstNameInitial}}</p>
-  <p>{{lastNameInitial}}</p>
+  <p class="title is -4">{{karteNumber}}</p>
+  <p class="subtitle is-5">名前．苗字のイニシャル：{{firstNameInitial}}．{{lastNameInitial}}</p>
+  <a class="button is-primary" href="/patients/edit/{{id}}">編集</a>
 </div>
 
 {{else}}
