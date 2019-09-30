@@ -3,15 +3,15 @@ const Schema = mongoose.Schema;
 
 //Create Schema
 const PatientSchema = new Schema({
-  KarteNumber: {
+  karteNumber: {
+    type: String,
+    required: true
+  },
+  firstNameInitial: {
     type: String,
     required: true
   },
   lastNameInitial: {
-    type: String,
-    required: true
-  },
-  firstNameInital: {
     type: String,
     required: true
   },

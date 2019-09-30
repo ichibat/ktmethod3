@@ -76,7 +76,17 @@ app.post("/patients", (req, res) => {
       lastNameInitial: req.body.lastNameInitial
     });
   } else {
-    res.send("passed");
+    const newPatient = {
+      karteNumber: req.body.karteNumber,
+      firstNameInitial: req.body.firstNameInitial,
+      lastNameInitial: req.body.lastNameInitial
+    };
+    console.log(`patient is ${newPatient.karteNumber}`);
+
+    new Patient(newPatient).save().then(patient => {
+      console.log("saved");
+      res.redirect("/patients");
+    });
   }
 });
 
