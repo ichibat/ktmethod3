@@ -1,0 +1,10 @@
+{{#each patients}}
+<div class="card card-content">
+  <p>{{karteNumber}}</p>
+  <p>{{firstNameInitial}}</p>
+  <p>{{lastNameInitial}}</p>
+</div>
+
+{{else}}
+<p>患者さんは登録されていません</p>
+{{/each}}

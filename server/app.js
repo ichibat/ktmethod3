@@ -49,6 +49,17 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
+//Patients index page
+app.get("/patients", (req, res) => {
+  Patient.find({})
+    .sort({ date: "desc" })
+    .then(patients => {
+      res.render("patients/index", {
+        patients: patients
+      });
+    });
+});
+
 //addPatients Form
 app.get("/patients/add", (req, res) => {
   res.render("patients/add");
