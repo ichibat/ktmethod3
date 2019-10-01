@@ -67,15 +67,13 @@ app.get("/patients/add", (req, res) => {
 
 //edit Patients Form
 app.get("/patients/edit/:id", (req, res) => {
-  patient
-    .findOne({
-      _id: req.params.id
-    })
-    .then(patient => {
-      res.render("patients/edit", {
-        patient: patient
-      });
+  Patient.findOne({
+    _id: req.params.id
+  }).then(patient => {
+    res.render("patients/edit", {
+      patient: patient
     });
+  });
 });
 
 //Post Patients
