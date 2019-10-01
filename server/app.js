@@ -4,6 +4,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 
 const app = express();
 
@@ -35,6 +36,9 @@ app.set("view engine", "handlebars");
 //Body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+//Method-override
+app.use(methodOverride("_method"));
 
 //Cor
 app.use(cors());
@@ -110,6 +114,11 @@ app.post("/patients", (req, res) => {
       res.redirect("/patients");
     });
   }
+});
+
+//Edit Patients
+app.put("/patients/:id", (req, res) => {
+  res.send("PUT");
 });
 
 //Routing for api/scores
