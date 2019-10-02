@@ -118,7 +118,18 @@ app.post("/patients", (req, res) => {
 
 //Edit Patients
 app.put("/patients/:id", (req, res) => {
-  res.send("PUT");
+  Patient.findOne({
+    _id: req.params.id
+  }).then(patient => {
+    //new values
+    patient.karteNumber = req.body.karteNumber;
+    patient.firstNameInitial = req.body.firstNameInitial;
+    patient.lastNameInitial = req.body.lastNameInitial;
+
+    patient.save().then(patient => {
+      res.redirect("/patients");
+    });
+  });
 });
 
 //Routing for api/scores
