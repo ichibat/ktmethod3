@@ -5,6 +5,8 @@ const helmet = require("helmet");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
+const flash = require("connect-flash");
+const session = require("express-session");
 
 const app = express();
 
@@ -39,6 +41,25 @@ app.use(bodyParser.json());
 
 //Method-override
 app.use(methodOverride("_method"));
+
+//Express-session
+app.use(
+  session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true
+  })
+);
+
+app.use(flash());
+
+//Global variables
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error_msg = req.flash("error");
+  next();
+});
 
 //Cor
 app.use(cors());
@@ -110,7 +131,7 @@ app.post("/patients", (req, res) => {
     console.log(`patient is ${newPatient.karteNumber}`);
 
     new Patient(newPatient).save().then(patient => {
-      console.log("saved");
+      req.flash("success_msg", "患者さんは新規登録されました");
       res.redirect("/patients");
     });
   }
@@ -126,6 +147,7 @@ app.put("/patients/:id", (req, res) => {
     patient.firstNameInitial = req.body.firstNameInitial;
     patient.lastNameInitial = req.body.lastNameInitial;
     patient.save().then(patient => {
+      req.flash("success_msg", "患者さんの登録は変更されました");
       res.redirect("/patients");
     });
   });
@@ -133,7 +155,10 @@ app.put("/patients/:id", (req, res) => {
 
 //Delete patients
 app.delete("/patients/:id", (req, res) => {
-  res.send("DELETE");
+  Patient.deleteOne({ _id: req.params.id }).then(() => {
+    req.flash("success_msg", "患者さんの登録は削除されました");
+    res.redirect("/patients");
+  });
 });
 
 //Routing for api/scores
