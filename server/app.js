@@ -125,11 +125,15 @@ app.put("/patients/:id", (req, res) => {
     patient.karteNumber = req.body.karteNumber;
     patient.firstNameInitial = req.body.firstNameInitial;
     patient.lastNameInitial = req.body.lastNameInitial;
-
     patient.save().then(patient => {
       res.redirect("/patients");
     });
   });
+});
+
+//Delete patients
+app.delete("/patients/:id", (req, res) => {
+  res.send("DELETE");
 });
 
 //Routing for api/scores
