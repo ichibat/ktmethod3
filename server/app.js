@@ -10,6 +10,9 @@ const session = require("express-session");
 
 const app = express();
 
+//Load routes
+const patients = require("./routes/patients");
+
 //Connect to mongoose
 mongoose
   .connect("mongodb://tims:Hit135Run@ds019946.mlab.com:19946/ktmethod", {
@@ -74,97 +77,23 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
-//Patients index page
-app.get("/patients", (req, res) => {
-  Patient.find({})
-    .sort({ date: "desc" })
-    .then(patients => {
-      res.render("patients/index", {
-        patients: patients
-      });
-    });
+//User Login
+app.get("/users/login", (req, res) => {
+  res.send("login");
 });
 
-//add Patients
-app.get("/patients/add", (req, res) => {
-  res.render("patients/add");
-});
-
-//edit Patients Form
-app.get("/patients/edit/:id", (req, res) => {
-  Patient.findOne({
-    _id: req.params.id
-  }).then(patient => {
-    res.render("patients/edit", {
-      patient: patient
-    });
-  });
-});
-
-//Post Patients
-app.post("/patients", (req, res) => {
-  console.log(req.body);
-  let errors = [];
-
-  if (!req.body.karteNumber) {
-    errors.push({ text: "カルテ番号を入力してください" });
-  }
-  if (!req.body.firstNameInitial) {
-    errors.push({ text: "名前のイニシャルを入力してください" });
-  }
-  if (!req.body.lastNameInitial) {
-    errors.push({ text: "苗字のイニシャルを入力してください" });
-  }
-  if (errors.length > 0) {
-    res.render("patients/add", {
-      errors: errors,
-      karteNumber: req.body.karteNumber,
-      firstNameInitial: req.body.firstNameInitial,
-      lastNameInitial: req.body.lastNameInitial
-    });
-  } else {
-    const newPatient = {
-      karteNumber: req.body.karteNumber,
-      firstNameInitial: req.body.firstNameInitial,
-      lastNameInitial: req.body.lastNameInitial
-    };
-    console.log(`patient is ${newPatient.karteNumber}`);
-
-    new Patient(newPatient).save().then(patient => {
-      req.flash("success_msg", "患者さんは新規登録されました");
-      res.redirect("/patients");
-    });
-  }
-});
-
-//Edit Patients
-app.put("/patients/:id", (req, res) => {
-  Patient.findOne({
-    _id: req.params.id
-  }).then(patient => {
-    //new values
-    patient.karteNumber = req.body.karteNumber;
-    patient.firstNameInitial = req.body.firstNameInitial;
-    patient.lastNameInitial = req.body.lastNameInitial;
-    patient.save().then(patient => {
-      req.flash("success_msg", "患者さんの登録は変更されました");
-      res.redirect("/patients");
-    });
-  });
-});
-
-//Delete patients
-app.delete("/patients/:id", (req, res) => {
-  Patient.deleteOne({ _id: req.params.id }).then(() => {
-    req.flash("success_msg", "患者さんの登録は削除されました");
-    res.redirect("/patients");
-  });
+//User Register
+app.get("/users/register", (req, res) => {
+  res.send("register");
 });
 
 //Routing for api/scores
 const scores = require("./routes/api/scores");
 
 app.use("/api/scores", scores);
+
+//Use routes
+app.use("/patients", patients);
 
 //Port setting
 const port = process.env.PORT || 8000;
