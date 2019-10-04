@@ -12,6 +12,7 @@ const app = express();
 
 //Load routes
 const patients = require("./routes/patients");
+const users = require("./routes/users");
 
 //Connect to mongoose
 mongoose
@@ -77,16 +78,6 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
-//User Login
-app.get("/users/login", (req, res) => {
-  res.send("login");
-});
-
-//User Register
-app.get("/users/register", (req, res) => {
-  res.send("register");
-});
-
 //Routing for api/scores
 const scores = require("./routes/api/scores");
 
@@ -94,6 +85,7 @@ app.use("/api/scores", scores);
 
 //Use routes
 app.use("/patients", patients);
+app.use("/users", users);
 
 //Port setting
 const port = process.env.PORT || 8000;
