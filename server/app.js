@@ -11,8 +11,8 @@ const session = require("express-session");
 const app = express();
 
 //Load routes
-const patients = require("./routes/patients");
-const users = require("./routes/users");
+const patients = require("./routes/api/patients");
+const users = require("./routes/api/users");
 
 //Connect to mongoose
 mongoose
