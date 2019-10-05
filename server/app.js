@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -42,6 +43,9 @@ app.set("view engine", "handlebars");
 //Body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+//Static folder
+app.use(express.static(path.join(__dirname, "public")));
 
 //Method-override
 app.use(methodOverride("_method"));
