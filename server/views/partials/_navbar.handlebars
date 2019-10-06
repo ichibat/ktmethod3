@@ -19,6 +19,23 @@
           ホーム
         </a>
 
+        {{#if user}}
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            患者さんデータ管理
+          </a>
+          <div class="navbar-dropdown">
+            <a href="/patients" class="navbar-item">
+              患者さん一覧
+            </a>
+            <a href="/patients/add" class="navbar-item">
+              患者さんの追加
+            </a>
+          </div>
+        </div>
+
+        {{else}}
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             ユーザー管理
@@ -34,19 +51,7 @@
           </div>
         </div>
 
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            患者さんデータ管理
-          </a>
-          <div class="navbar-dropdown">
-            <a href="/patients" class="navbar-item">
-              患者さん一覧
-            </a>
-            <a href="/patients/add" class="navbar-item">
-              患者さんの追加
-            </a>
-          </div>
-        </div>
+        {{/if}}
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             このサイトに関して
