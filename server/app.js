@@ -7,6 +7,7 @@ const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
+const passport = require("passport");
 const session = require("express-session");
 
 const app = express();
@@ -14,6 +15,9 @@ const app = express();
 //Load routes
 const patients = require("./routes/api/patients");
 const users = require("./routes/api/users");
+
+//Passport config
+require("./config/passport")(passport);
 
 //Connect to mongoose
 mongoose
