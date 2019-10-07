@@ -53,10 +53,14 @@ const ScoreSchema = new Schema({
   ktmScore.Q13Value: {
     type: Number,
     required: true
-  }
-  commentUser: {
+  },
+  user: {
     type: Schema.Types.ObjectId,
     ref:"users"
+  },
+  date: {
+    type: Date,
+    default: Date.now()
   }
 });
 
