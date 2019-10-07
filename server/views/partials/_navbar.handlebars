@@ -36,20 +36,7 @@
         </div>
 
         {{else}}
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            ユーザー管理
-          </a>
 
-          <div class="navbar-dropdown">
-            <a href="/users/login" class="navbar-item">
-              ユーザーログイン
-            </a>
-            <a href="/users/register" class="navbar-item">
-              ユーザー登録
-            </a>
-          </div>
-        </div>
 
         {{/if}}
         <div class="navbar-item has-dropdown is-hoverable">
@@ -71,18 +58,20 @@
         </div>
       </div>
 
+      {{#if user}}
+      {{else}}
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
+            <a class="button is-primary" href="/users/register">
+              <strong>ユーザー登録</strong>
             </a>
-            <a class="button is-light">
-              Log in
+            <a class="button is-light" href="/users/login">
+              ログイン
             </a>
           </div>
         </div>
       </div>
-
+      {{/if}}
     </div>
 </nav>
