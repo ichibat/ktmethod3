@@ -9,7 +9,7 @@ const Patient = mongoose.model("patients");
 
 //Patients index page
 router.get("/", ensureAuthenticated, (req, res) => {
-  Patient.find({})
+  Patient.find({ user: req.user.id })
     .sort({ date: "desc" })
     .then(patients => {
       res.render("patients/index", {
@@ -28,9 +28,14 @@ router.get("/edit/:id", ensureAuthenticated, (req, res) => {
   Patient.findOne({
     _id: req.params.id
   }).then(patient => {
-    res.render("patients/edit", {
-      patient: patient
-    });
+    if (patient.user != req.user.id) {
+      req.flash("error_msg", "承認されていません");
+      res.redirect("/");
+    } else {
+      res.render("patients/edit", {
+        patient: patient
+      });
+    }
   });
 });
 
@@ -59,7 +64,8 @@ router.post("/", ensureAuthenticated, (req, res) => {
     const newPatient = {
       karteNumber: req.body.karteNumber,
       firstNameInitial: req.body.firstNameInitial,
-      lastNameInitial: req.body.lastNameInitial
+      lastNameInitial: req.body.lastNameInitial,
+      user: req.user.id
     };
     console.log(`patient is ${newPatient.karteNumber}`);
 
