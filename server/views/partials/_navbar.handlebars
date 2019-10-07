@@ -59,8 +59,12 @@
       </div>
 
       {{#if user}}
-      {{else}}
       <div class="navbar-end">
+        <a class="button is-light" href="/users/logout">
+          ログアウト
+        </a>
+        {{else}}
+
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-primary" href="/users/register">
