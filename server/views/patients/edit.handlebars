@@ -13,29 +13,46 @@
     <div class="control">
       <input class="input" type="text" id="karteNo" value="{{patient.karteNumber}}" name="karteNumber" required>
     </div>
+  </div>
 
 
-    <div class="field">
-      <label for="firstN" class="label">名前のイニシャル</label>
-      <div class="control">
-        <input class="input" type="text" id="firstN" name="firstNameInitial" required
-          value="{{patient.firstNameInitial}}">
-      </div>
 
-      <label for="lastN" class="label">苗字のイニシャル</label>
-      <div class="control">
-        <input class="input" type="text" id="lastN" name="lastNameInitial" required value="{{patient.lastNameInitial}}">
-      </div>
-
+  <div class="field">
+    <label for="firstN" class="label">名前のイニシャル</label>
+    <div class="control">
+      <input class="input" type="text" id="firstN" name="firstNameInitial" required
+        value="{{patient.firstNameInitial}}">
     </div>
 
-    <div class="field is-grouped">
-      <div class="control">
-        <button class="button is-primary">登録</button>
-      </div>
-      <div class="control">
-        <button class="button is-text">中止</button>
-      </div>
+
+
+    <label for="lastN" class="label">苗字のイニシャル</label>
+    <div class="control">
+      <input class="input" type="text" id="lastN" name="lastNameInitial" required value="{{patient.lastNameInitial}}">
     </div>
+  </div>
+
+  <div class="field">
+    <label for="Q1" class="label">(1)食べる意欲</label>
+    <div class="control">
+      <select name="question1" id="Q1" class="select">
+        <option value="0" selected>選択してください</option>
+        <option value="1">1.促しや援助しても食べようとしない</option>
+        <option value="2">2.促しや援助で少し食べる</option>
+        <option value="3">3.促しや援助で半量食べる</option>
+        <option value="4">4.促しや援助でほとんど食べる</option>
+        <option value="5">5.介助の有無に関わらず食べようとする，食べたいと意思表示する</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-primary">登録</button>
+    </div>
+    <div class="control">
+      <button class="button is-text">中止</button>
+    </div>
+  </div>
   </div>
 </form>
