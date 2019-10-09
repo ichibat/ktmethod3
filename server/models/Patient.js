@@ -19,6 +19,57 @@ const PatientSchema = new Schema({
     type: String,
     required: true
   },
+  karteNumber: {
+    type: String,
+    required: true
+  },
+  scoreCreated: {
+    type: Date,
+    required: true
+  },
+  Q1Value: {
+    type: Number
+  },
+  Q2Value: {
+    type: Number
+  },
+  Q3Value: {
+    type: Number
+  },
+  Q4Value: {
+    type: Number
+  },
+  Q5Value: {
+    type: Number
+  },
+  Q6Value: {
+    type: Number
+  },
+  Q7Value: {
+    type: Number
+  },
+  Q8Value: {
+    type: Number
+  },
+  Q9Value: {
+    type: Number
+  },
+  Q10Value: {
+    type: Number,
+    required: true
+  },
+  Q11Value: {
+    type: Number,
+    required: true
+  },
+  Q12Value: {
+    type: Number,
+    required: true
+  },
+  Q13Value: {
+    type: Number,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now
