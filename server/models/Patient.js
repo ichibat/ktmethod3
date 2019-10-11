@@ -23,9 +23,8 @@ const PatientSchema = new Schema({
     type: String,
     required: true
   },
-  scoreCreated: {
-    type: Date,
-    required: true
+  dateScored: {
+    type: Date
   },
   Q1Value: {
     type: Number
@@ -55,20 +54,16 @@ const PatientSchema = new Schema({
     type: Number
   },
   Q10Value: {
-    type: Number,
-    required: true
+    type: Number
   },
   Q11Value: {
-    type: Number,
-    required: true
+    type: Number
   },
   Q12Value: {
-    type: Number,
-    required: true
+    type: Number
   },
   Q13Value: {
-    type: Number,
-    required: true
+    type: Number
   },
   date: {
     type: Date,
