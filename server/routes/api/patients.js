@@ -41,7 +41,9 @@ router.get("/edit/:id", ensureAuthenticated, (req, res) => {
 
 //Post Patients
 router.post("/", ensureAuthenticated, (req, res) => {
+  console.log(req.user);
   console.log(req.body);
+
   let errors = [];
 
   if (!req.body.karteNumber) {

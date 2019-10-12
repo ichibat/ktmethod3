@@ -7,19 +7,254 @@
       <input class="input" type="text" id="karteNo" placeholder="例)000135" name="karteNumber" required>
     </div>
 
+    <div>
+      <div class="field">
+        <label for="firstN" class="label">名前のイニシャル</label>
+        <div class="control">
+          <input class="input" type="text" id="firstN" placeholder="例)Y" name="firstNameInitial" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="lastN" class="label">苗字のイニシャル</label>
+        <div class="control">
+          <input class="input" type="text" id="lastN" placeholder="例)T" name="lastNameInitial" required>
+        </div>
+      </div>
+    </div>
 
     <div class="field">
-      <label for="firstN" class="label">名前のイニシャル</label>
+      <label for="scoredDate" class="label">評価日</label>
       <div class="control">
-        <input class="input" type="text" id="firstN" placeholder="例)Y" name="firstNameInitial" required>
+        <input class="input" type="text" id="scoredDate" name="dateScored" required>
       </div>
-
-      <label for="lastN" class="label">苗字のイニシャル</label>
-      <div class="control">
-        <input class="input" type="text" id="lastN" placeholder="例)T" name="lastNameInitial" required>
-      </div>
-
     </div>
+
+    <div class="field">
+      <label for="Q1" class="label">(1)食べる意欲</label>
+      <div class="control">
+        <div class="select">
+          <select name="Q1Value" id="Q1">
+            <option value="0" selected>選択してください</option>
+            <option value="1">1.促しや援助しても食べようとしない</option>
+            <option value="2">2.促しや援助で少し食べる</option>
+            <option value="3">3.促しや援助で半量食べる</option>
+            <option value="4">4.促しや援助でほとんど食べる</option>
+            <option value="5">5.介助の有無に関わらず食べようとする，食べたいと意思表示する</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="Q2" class="label">(2)全身状態</label>
+      <div class="control">
+        <div class="select">
+          <select name="Q2Value" id="Q2">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.(全般)発熱があり，意識レベルは不良</option>
+            <option value="2">2.(急性期)何らかの急性疾患による発熱はあるが 37.5
+              °C以下に解熱するときがある。もしくは意識レベルが概ね良好
+              (回復期・生活期)発熱があり，たびたび治療が必要となる</option>
+            <option value="3">3.(急性期)3 日以上
+              37.5°C以下で意識状態が概ね良好(回復期・生活期)1カ月に1-2
+              回37.5°C以上の発熱があり，治療を要することがある</option>
+            <option value="4">4.(急性期)7日以上発熱はなく，意識レベルは概ね良好(回復期・生活期)1カ月に1-2
+              回37.5°C以上の発熱があるが，とくに治療をsしなくても解熱する</option>
+            <option value="5">5.発熱はなく，意識レベルは良好</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="field">
+      <label for="Q3" class='label'>(3)呼吸状態</label><br />
+      <div class="control">
+        <div class="select">
+          <select name="Q3Value" id="Q3">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.絶えず痰貯留があり，1日10回以上の吸引が必要</option>
+            <option value="2">2.痰貯留があり，1日5-9回の吸引が必要</option>
+            <option value="3">3.痰貯留があり，1日5回未満の吸引が必要</option>
+            <option value="4">4.痰貯留があるが，自力で喀出が可能</option>
+            <option value="5">5.痰貯留や湿性嗄声がない</option>
+          </select>
+        </div>
+      </div>
+      <p>
+        ※気管カニューレがある場合，-1 点とする(ただし最低点は 1 点とする)
+      </p>
+    </div>
+
+
+
+    <div class="field">
+      <label for="Q4" class="label">(4)口腔状態</label><br />
+      <div class="control">
+        <div class="select">
+          <select name="Q4Value" id="Q4">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.口腔衛生が著しく不良で，歯や義歯に歯科治療が必要</option>
+            <option value="2">2.口腔衛生が不良で，歯や義歯に歯科治療が必要</option>
+            <option value="3">3.口腔衛生は改善しているが，歯や義歯の治療は必要</option>
+            <option value="4">4.口腔衛生は良好だが，歯や義歯の治療は必要</option>
+            <option value="5">5.口腔衛生は良好で，歯や義歯の治療は必要としない</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="Q5" class='label'>(5)認知機能(食事中)</label>
+      <div class="control">
+        <div class="select">
+          <select name="Q5Value" id="Q5">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.食事中の認知機能が著しく低く，覚醒レベルも低く，全介助が必要</option>
+            <option value="2">2.食事中の認知機能が低く，全介助が必要</option>
+            <option value="3">3.食事中の認知機能が低く，一部介助が必要</option>
+            <option value="4">4.食事中の認知機能は概ね保たれているが，介助を必要とすることがある</option>
+            <option value="5">5.食事中の認知機能は良好で，介助なしで食事摂取可能</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="Q6" class="label">(6)咀嚼・送り込み</label>
+      <div class="control">
+        <div class="select">
+          <select name="Q6Value" id="Q6">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.食べるための口・舌・頬・あごの動きのすべてがかなり困難</option>
+            <option value="2">2.食べるための口・舌・頬・あごの動きのいずれかがかなり困難</option>
+            <option value="3">3.食べるための口・舌・頬・あごの動きのいずれかが困難だが，何らかの対処法で対応できる</option>
+            <option value="4">4.食べるための口・舌・頬・あごの動きのいずれも概ね良好</option>
+            <option value="5">5.食べるための口・舌・頬・あごの動きのすべてが良好</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="Q7" class="label">(7)嚥下</label>
+      <div class="control">
+        <div class="select">
+          <select name="Q7Value" id="Q7">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.嚥下できない，頻回のむせ，呼吸促迫，重度の誤嚥</option>
+            <option value="2">2.嚥下は可能だが，むせや咽頭残留，呼吸変化を伴う</option>
+            <option value="3">3.嚥下は可能だが，むせ・咽頭残留・複数回嚥下・湿性嗄声のいずれかを伴うが，呼吸変化はなし</option>
+            <option value="4">4.嚥下可能で，むせはない，咽頭残留はあるかもしれないが，処理可能，良好な呼吸</option>
+            <option value="5">5.嚥下可能で，むせ・咽頭残留はなく，良好な呼吸</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="Q8" class="label">(8)姿勢・耐久性</label>
+      <div class="control">
+        <div class="select">
+          <select name="Q8Value" id="Q8">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.ベッド上で食事の姿勢保持が困難，あるいはベッド上ですべての食事をしている</option>
+            <option value="2">2.リクライニング車いすで食事の姿勢保持が困難で，かなりの介助が必要</option>
+            <option value="3">3.介助によりリクライニング車いすで食事の姿勢保持が可能</option>
+            <option value="4">4.介助により普通型車いすで食事の姿勢保持が可能</option>
+            <option value="5">5.介助なしで普通の椅子で食事の姿勢保持が可能</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="Q9" class='label'>(9)食事動作</label>
+      <div class="control">
+        <div class="select">
+          <select name="Q9Value" id="Q9">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.すべての食物を皿から自分の口に運び，咀嚼嚥下する食事動作に相当の介助が必要。自力では食事動作
+              の25%未満しかできない，あるいは経管栄養</option>
+            <option value="2">2.介助が必要。自力で食事動作の25％以上 50％未満を行う</option>
+            <option value="3">3.一部介助が必要。自力で食事動作の50％以上を行う</option>
+            <option value="4">4.食事動作に間接的な介助のみ（準備や見守り）が必要で，自立している。（食事時間が長くかかる症例も含める）</option>
+            <option value="5">5.食事動作が完全に自立している。（自助具を使用する場合も含む）</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="Q10" class="label">(10)活動</label>
+      <div class="control">
+        <div class="select">
+          <select name="Q10Value" id="Q10">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.寝たきり，ベッドからの移乗・トイレ・食事・更衣などすべてに介助が必要</option>
+            <option value="2">2.介助で車いすへの移乗が可能で，ベッドから離れて食事が可能だが，めったに外出はしない</option>
+            <option value="3">3.介助で車いすへの移乗が可能で，ベッドから離れて食事が可能。さらに介助でよく外出する</option>
+            <option value="4">4.自力で車いすへの移乗が可能で，ベッドから離れて食事が可能だが，めったに外出はしない</option>
+            <option value="5">5.自力で車いすへの移乗が可能で，ベッドから離れて食事が可能。1
+              人で外出が可能，あるいは介助でよ く外出する</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="11" class='label'>(11)摂食状況レベル</label><br />
+      <div class="control">
+        <div class="select">
+          <select name="Q11Value" id="Q11">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.人工栄養のみ，もしくは間接嚥下訓練のみ</option>
+            <option value="2">2.少量の経口摂取は可能(直接嚥下訓練含む)だが，主に人工栄養に依存</option>
+            <option value="3">3.半分以上が経口摂取で，補助的に人工栄養を使用</option>
+            <option value="4">4.形態を変えた食事や飲料を経口摂取，人工栄養は使用しない</option>
+            <option value="5">5.形態を変えずに食事や飲料を経口摂取，人工栄養は使用しない</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label for="Q12" class="label">(12)食物形態</label><br />
+      <div class="control">
+        <div class="select">
+          <select name="Q12Value" id="Q12">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.口からは何も食べていない</option>
+            <option value="2">2.ゼリーやムース食を主に食べる 3</option>
+            <option value="3">3.ペースト食を主に食べる</option>
+            <option value="4">4.咀嚼食を主に食べる</option>
+            <option value="5">5.普通食を主に食べる</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="Q13" class="label">(13)栄養</label>
+      <div class="control">
+        <div class="select">
+          <select name="Q13Value" id="Q13">
+            <option value="" selected>選択してください</option>
+            <option value="1">1.栄養状態がとても悪い</option>
+            <option value="2">2.栄養状態が悪い</option>
+            <option value="3">3.栄養状態が悪くない</option>
+            <option value="4">4.栄養状態が良い</option>
+            <option value="5">5.栄養状態がとても良い</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
 
     <div class="field is-grouped">
       <div class="control">
