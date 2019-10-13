@@ -40,8 +40,48 @@ router.get("/edit/:id", ensureAuthenticated, (req, res) => {
 });
 
 //Post Patients
-router.post("/", ensureAuthenticated, (req, res) => {
+router.post("/scores", ensureAuthenticated, (req, res) => {
   console.log(req.user);
+  console.log(req.body);
+
+  let errors = [];
+
+  if (!req.body.karteNumber) {
+    errors.push({ text: "カルテ番号を入力してください" });
+  }
+  if (!req.body.firstNameInitial) {
+    errors.push({ text: "名前のイニシャルを入力してください" });
+  }
+  if (!req.body.lastNameInitial) {
+    errors.push({ text: "苗字のイニシャルを入力してください" });
+  }
+  if (errors.length > 0) {
+    res.render("patients/add", {
+      errors: errors,
+      karteNumber: req.body.karteNumber,
+      firstNameInitial: req.body.firstNameInitial,
+      lastNameInitial: req.body.lastNameInitial
+    });
+  } else {
+    const newPatient = {
+      karteNumber: req.body.karteNumber,
+      firstNameInitial: req.body.firstNameInitial,
+      lastNameInitial: req.body.lastNameInitial,
+      user: req.user.id
+    };
+    console.log(`patient is ${newPatient.karteNumber}`);
+
+    new Patient(newPatient).save().then(patient => {
+      req.flash("success_msg", "患者さんは新規登録されました");
+      res.render("patients/score", {
+        patien: patient
+      });
+    });
+  }
+});
+
+//Post Scores
+router.post("/", ensureAuthenticated, (req, res) => {
   console.log(req.body);
 
   let errors = [];
