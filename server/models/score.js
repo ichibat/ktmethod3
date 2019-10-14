@@ -10,53 +10,50 @@ const ScoreSchema = new Schema({
   scoreCreated: {
     type: Date,
     required: true
-  }
-  ktmScore.Q1Value: {
+  },
+  Q1Value: {
     type: Number
   },
-  ktmScore.Q2Value: {
+  Q2Value: {
     type: Number
   },
-  ktmScore.Q3Value: {
+  Q3Value: {
     type: Number
   },
-  ktmScore.Q4Value: {
+  Q4Value: {
     type: Number
   },
-  ktmScore.Q5Value: {
+  Q5Value: {
     type: Number
   },
-  ktmScore.Q6Value: {
+
+  Q6Value: {
     type: Number
   },
-  ktmScore.Q7Value: {
+  Q7Value: {
     type: Number
   },
-  ktmScore.Q8Value: {
+  Q8Value: {
     type: Number
   },
-  ktmScore.Q9Value: {
+  Q9Value: {
     type: Number
   },
-  ktmScore.Q10Value: {
-    type: Number,
-    required: true
+  Q10Value: {
+    type: Number
   },
-  ktmScore.Q11Value: {
-    type: Number,
-    required: true
+  Q11Value: {
+    type: Number
   },
-  ktmScore.Q12Value: {
-    type: Number,
-    required: true
+  Q12Value: {
+    type: Number
   },
-  ktmScore.Q13Value: {
-    type: Number,
-    required: true
+  Q13Value: {
+    type: Number
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref:"users"
+    ref: "users"
   },
   date: {
     type: Date,

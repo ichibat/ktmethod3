@@ -3,9 +3,11 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const { ensureAuthenticated } = require("../../helpers/auth");
 
-//Load Patient Model
+//Load Models
 require("../../models/Patient");
 const Patient = mongoose.model("patients");
+require("../../models/Score");
+const Score = mongoose.model("scores");
 
 //Patients index page
 router.get("/", ensureAuthenticated, (req, res) => {
@@ -40,7 +42,7 @@ router.get("/edit/:id", ensureAuthenticated, (req, res) => {
 });
 
 //Post Patients
-router.post("/scores", ensureAuthenticated, (req, res) => {
+router.post("/add", ensureAuthenticated, (req, res) => {
   console.log(req.user);
   console.log(req.body);
 
@@ -67,43 +69,77 @@ router.post("/scores", ensureAuthenticated, (req, res) => {
       karteNumber: req.body.karteNumber,
       firstNameInitial: req.body.firstNameInitial,
       lastNameInitial: req.body.lastNameInitial,
-      user: req.user.id
+      user: req.user._id
     };
     console.log(`patient is ${newPatient.karteNumber}`);
 
     new Patient(newPatient).save().then(patient => {
       req.flash("success_msg", "患者さんは新規登録されました");
       res.render("patients/score", {
-        patien: patient
+        patient: patient
       });
     });
   }
 });
 
 //Post Scores
-router.post("/", ensureAuthenticated, (req, res) => {
+router.post("/score", ensureAuthenticated, (req, res) => {
   console.log(req.body);
 
   let errors = [];
 
-  if (!req.body.karteNumber) {
-    errors.push({ text: "カルテ番号を入力してください" });
+  if (!req.body.dateScored) {
+    errors.push({ text: "評価日を入力してください" });
   }
-  if (!req.body.firstNameInitial) {
-    errors.push({ text: "名前のイニシャルを入力してください" });
+  if (!req.body.Q1Value) {
+    errors.push({ text: "(1)食べる意欲を入力してください" });
   }
-  if (!req.body.lastNameInitial) {
-    errors.push({ text: "苗字のイニシャルを入力してください" });
+  if (!req.body.Q2Value) {
+    errors.push({ text: "(2)全身状態を入力してください" });
   }
+  if (!req.body.Q3Value) {
+    errors.push({ text: "(3)呼吸状態を入力してください" });
+  }
+  if (!req.body.Q4Value) {
+    errors.push({ text: "(4)口腔状態を入力してください" });
+  }
+  if (!req.body.Q5Value) {
+    errors.push({ text: "(5)認知機能(食事中)を入力してください" });
+  }
+  if (!req.body.Q6Value) {
+    errors.push({ text: "(6)咀嚼・送り込みを入力してください" });
+  }
+  if (!req.body.Q7Value) {
+    errors.push({ text: "(7)嚥下を入力してください" });
+  }
+  if (!req.body.Q8Value) {
+    errors.push({ text: "(8)姿勢・耐久性を入力してください" });
+  }
+  if (!req.body.Q9Value) {
+    errors.push({ text: "(9)食事動作を入力してください" });
+  }
+  if (!req.body.Q10Value) {
+    errors.push({ text: "(10)活動を入力してください" });
+  }
+  if (!req.body.Q11Value) {
+    errors.push({ text: "(11)摂食状況レベルを入力してください" });
+  }
+  if (!req.body.Q12Value) {
+    errors.push({ text: "(12)食物形態を入力してください" });
+  }
+  if (!req.body.Q13Value) {
+    errors.push({ text: "(13)栄養を入力してください" });
+  }
+
   if (errors.length > 0) {
-    res.render("patients/add", {
-      errors: errors,
-      karteNumber: req.body.karteNumber,
-      firstNameInitial: req.body.firstNameInitial,
-      lastNameInitial: req.body.lastNameInitial
+    res.render("patients/score", {
+      errors: errors
+      // karteNumber: req.body.karteNumber,
+      // firstNameInitial: req.body.firstNameInitial,
+      // lastNameInitial: req.body.lastNameInitial
     });
   } else {
-    const newPatient = {
+    const newScore = {
       karteNumber: req.body.karteNumber,
       firstNameInitial: req.body.firstNameInitial,
       lastNameInitial: req.body.lastNameInitial,
@@ -111,8 +147,8 @@ router.post("/", ensureAuthenticated, (req, res) => {
     };
     console.log(`patient is ${newPatient.karteNumber}`);
 
-    new Patient(newPatient).save().then(patient => {
-      req.flash("success_msg", "患者さんは新規登録されました");
+    new Score(newScore).save().then(score => {
+      req.flash("success_msg", "スコアは新規登録されました");
       res.redirect("/patients");
     });
   }

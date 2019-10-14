@@ -1,16 +1,26 @@
-<h2 class="is-size-4">KTスコアの入力</h2>
-<form action="/patients" method="post">
+<h2 class="is-size-2">KTスコアの入力</h2>
+<form action="/patients/score" method="post">
+
+  <div class="card">
+    <input type="text" value="カルテ番号: {{patient.karteNumber}}" readonly class="input is-size-4">
+    <p class="is-size-4"> 名前のイニシャル:{{patient.firstNameInitial}}.{{patient.lastNameInitial}}</p>
+  </div>
+
 
   <div class="field">
+    <input type="hidden" name="userID" value={{patient.user}} class="input">
+  </div>
 
-
-    <div class="field">
-      <label for="scoredDate" class="label">評価日</label>
-      <div class="control">
-        <input class="input" type="text" id="scoredDate" name="dateScored" required>
-      </div>
+  <div class="field">
+    <label for="scoredDate" class="label">評価日</label>
+    <div class="control">
+      <input class="input" type="text" id="scoredDate" name="dateScored" required>
     </div>
+  </div>
 
+
+
+  <div class="field">
     <label for="Q1" class="label">(1)食べる意欲</label>
     <div class="control">
       <div class="select">
