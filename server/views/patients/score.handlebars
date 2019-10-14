@@ -2,7 +2,7 @@
 <form action="/patients/score" method="post">
 
   <div class="card">
-    <input type="text" value="カルテ番号: {{patient.karteNumber}}" readonly class="input is-size-4">
+    <input type="text" value="{{patient.karteNumber}}" readonly class="input is-size-4" name="karteNumber">
     <p class="is-size-4"> 名前のイニシャル:{{patient.firstNameInitial}}.{{patient.lastNameInitial}}</p>
   </div>
 

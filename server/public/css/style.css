@@ -3,6 +3,11 @@
   margin: auto;
 }
 
+/* Basic */
+.b-fluid {
+  width: 100%;
+}
+
 /* Project */
 
 .p-basicPatientInformation {

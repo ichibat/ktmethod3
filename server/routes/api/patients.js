@@ -141,11 +141,27 @@ router.post("/score", ensureAuthenticated, (req, res) => {
   } else {
     const newScore = {
       karteNumber: req.body.karteNumber,
-      firstNameInitial: req.body.firstNameInitial,
-      lastNameInitial: req.body.lastNameInitial,
-      user: req.user.id
+      dateScored: req.body.dateScored,
+      Q1Value: req.body.Q1Value,
+      Q2Value: req.body.Q2Value,
+      Q3Value: req.body.Q3Value,
+      Q4Value: req.body.Q4Value,
+      Q5Value: req.body.Q5Value,
+      Q6Value: req.body.Q6Value,
+      Q7Value: req.body.Q7Value,
+      Q8Value: req.body.Q8Value,
+      Q9Value: req.body.Q9Value,
+      Q10Value: req.body.Q10Value,
+      Q11Value: req.body.Q11Value,
+      Q12Value: req.body.Q12Value,
+      Q13Value: req.body.Q13Value,
+      Q2Value: req.body.Q2Value,
+      Q1Value: req.body.Q1Value,
+      Q2Value: req.body.Q2Value,
+
+      userID: req.body.userID
     };
-    console.log(`patient is ${newPatient.karteNumber}`);
+    console.log("score stored!");
 
     new Score(newScore).save().then(score => {
       req.flash("success_msg", "スコアは新規登録されました");

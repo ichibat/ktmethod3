@@ -7,8 +7,8 @@ const ScoreSchema = new Schema({
     type: String,
     required: true
   },
-  scoreCreated: {
-    type: Date,
+  dateScored: {
+    type: String,
     required: true
   },
   Q1Value: {
@@ -51,7 +51,7 @@ const ScoreSchema = new Schema({
   Q13Value: {
     type: Number
   },
-  user: {
+  userID: {
     type: Schema.Types.ObjectId,
     ref: "users"
   },
