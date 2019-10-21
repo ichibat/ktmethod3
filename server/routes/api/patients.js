@@ -85,7 +85,9 @@ router.post("/add", ensureAuthenticated, (req, res) => {
       Q12Value: req.body.Q12Value,
       Q13Value: req.body.Q13Value
     };
-    console.log(`patient is ${newPatient.karteNumber}`);
+    console.log(
+      `patient is ${newPatient.karteNumber} and processed to graph drawing.`
+    );
 
     new Patient(newPatient).save().then(patient => {
       req.flash("success_msg", "患者さんは新規登録されました");
