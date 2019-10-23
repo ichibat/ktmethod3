@@ -91,7 +91,8 @@ router.post("/add", ensureAuthenticated, (req, res) => {
 
     new Patient(newPatient).save().then(patient => {
       req.flash("success_msg", "患者さんは新規登録されました");
-      res.render("patients/add", {
+      // res.render("patients/graph");
+      res.render("patients/edit", {
         patient: patient
       });
     });
