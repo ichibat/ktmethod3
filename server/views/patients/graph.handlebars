@@ -11,6 +11,8 @@
 
 <canvas id="myChart" width="800" height="400"></canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+<p>{{patient.dateScored}}</p>
+<p>{{patient.Q1Value}}</p>
 <script>
 
   var ctx = document.getElementById("myChart");
@@ -34,38 +36,50 @@
       ],
       datasets: [
         {
-          label: "2019年8月12日",
-          data: [1, 3, 3, 3, 4, 1, 3, 4, 5, 3, 2, 1, 4],
-          backgroundColor: "RGBA(0,0,255,0)",
-          borderColor: "RGBA(225,95,150, 1)",
-          borderWidth: 2,
-          pointBackgroundColor: "RGB(46,106,177)"
-        },
-        {
-          label: "2019年8月21日",
-          data: [3, 4, 5, 4, 3, 5, 3, 4, 3, 2, 3, 4, 4],
-          backgroundColor: "RGBA(0,0,255,0)",
+          label: "{{patient.dateScored}}",
+          data: [{{ patient.Q1Value }},
+        {{ patient.Q2Value }}, 
+          {{ patient.Q3Value }},
+  { { patient.Q4Value } },
+  { { patient.Q5Value } },
+  { { patient.Q6Value } },
+  { { patient.Q7Value } },
+  { { patient.Q8Value } },
+  { { patient.Q9Value } },
+  { { patient.Q10Value } },
+  { { patient.Q11Value } },
+  { { patient.Q12Value } },
+  { { patient.Q13Value } }],
+  backgroundColor: "RGBA(0,0,255,0)",
+    borderColor: "RGBA(225,95,150, 1)",
+      borderWidth: 2,
+        pointBackgroundColor: "RGB(46,106,177)"
+  },
+  {
+    label: "2019年8月21日",
+      data: [3, 4, 5, 4, 3, 5, 3, 4, 3, 2, 3, 4, 4],
+        backgroundColor: "RGBA(0,0,255,0)",
           borderColor: "RGBA(115,255,25, 1)",
-          borderWidth: 2,
-          pointBackgroundColor: "RGB(46,106,177)"
-        }
+            borderWidth: 2,
+              pointBackgroundColor: "RGB(46,106,177)"
+  }
       ]
     },
-    options: {
-      title: {
-        display: true,
+  options: {
+    title: {
+      display: true,
         text: "KTバランスチャート"
-      },
-      scale: {
-        ticks: {
-          suggestedMin: 0,
+    },
+    scale: {
+      ticks: {
+        suggestedMin: 0,
           suggestedMax: 5,
-          stepSize: 1,
-          callback: function (value, index, values) {
-            return value + "点";
-          }
-        }
+            stepSize: 1,
+              callback: function (value, index, values) {
+                return value + "点";
+              }
       }
     }
+  }
   });
 </script>
